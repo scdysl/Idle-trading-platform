@@ -1,0 +1,52 @@
+/* 商品信息模块 */
+
+.product_list{
+  width: 100%;
+  height: 150rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+.list_left{
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 20rpx;
+}
+.product_info{
+  display: flex;
+  margin-left: 20rpx;
+}
+.txt{
+  margin-left: 20rpx;
+}
+/* 商品数量功能模块 */
+.product_number{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 20rpx;
+}
+/* 按钮 */
+.btn{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #f6f6f6;
+  align-items: center;
+}
+.pay{
+  display: flex;
+  flex-direction: row;
+  width: 40%;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  background-color: #ff6801;
+}

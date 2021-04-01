@@ -1,0 +1,42 @@
+<form bindsubmit="formSubmit">
+  <view class="keyin">
+    <text>标题</text>
+    <input name="title" value="" placeholder-class="ipt" placeholder="起个亮眼的标题吧" />
+  </view>
+  <view class="keyinbtn">
+    <text>分类</text>
+    <input disabled placeholder-class="ipt" value="{{array[index]}}" placeholder="{{array[index]}}" />
+    <picker bindchange="bindPickerChange" name="category" value="{{array[index]}}" range="{{array}}">
+      <button  style="margin:0 10rpx;padding: 10rpx 10rpx;width:200rpx;font-size:26rpx" type="primary" >点我选择分类</button>
+    </picker>
+  </view>
+  <view class="keyin">
+    <text>二手价</text>
+    <input placeholder-class="ipt" name="price" value="" placeholder="开个价" />
+  </view>
+  <view class="keyinbtn">
+    <text>地址</text>
+    <input disabled placeholder-class="ipt" name="address" value="{{location.address}}" placeholder="{{location.address}}" />
+    <button style="margin:0 10rpx;padding: 10rpx 10rpx;width:200rpx;font-size:26rpx" type="primary" bindtap="chooseLocation">点我获取地址</button>
+  </view>
+  <view class="keyin">
+    <text>联系方式</text>
+    <input maxlength="11" placeholder-class="ipt" name="tel" value="" placeholder="留个联系方式" />
+  </view>
+  <view class="info">
+    <textarea name="deintro" value="" placeholder="详细介绍" ></textarea>
+  </view>
+  <view class="imglist">
+    <view class="tips">最多可上传6张图片</view>
+    <view class="pics-list" wx:for="{{pics}}" wx:key="index">
+      <image src="{{item}}" class="uploadImg"></image>
+      <image src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/delete.png" class="uploadImg-error" data-img="{{item}}" bindtap='deleteImg'></image>
+    </view>
+    
+    <image bindtap="upImg" src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/uploadimg.png" 
+    class="uploadImg {{isShow?'true':'hidetrue'}}" ></image>
+  </view>
+  <button bindtap="upTocloud" form-type="submit" class="btn_submit" type="primary">发布</button>
+
+</form>
+<!-- style="margin:5rpx 20rpx; width:100rpx;height:100rpx" -->

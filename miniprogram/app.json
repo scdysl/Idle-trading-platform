@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/product_detail/product_detail",
+    "pages/shopping_cart/shopping_cart",
+    "pages/publish/publish",
+    "pages/login/favorites/favorites",
+    "pages/login/goods/goods",
+    "pages/login/goods/edit/edit",
+    "pages/login/login",
+    "pages/list/list",
+    "pages/search/search"
+  ],
+  "window": {
+    "backgroundColor": "#f6f6f6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff6801",
+    "navigationBarTitleText": "旧友",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [
+    {
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "images/home.png",
+      "selectedIconPath": "images/home-h.png"
+    },{
+      "pagePath": "pages/publish/publish",
+      "text": "发布",
+      "iconPath": "images/release.png",
+      "selectedIconPath": "images/release-h.png"
+    },{
+      "pagePath": "pages/login/login",
+      "text": "我的",
+      "iconPath": "images/shopping_cart.png",
+      "selectedIconPath": "images/shopping_cart-h.png"
+    }]
+  },
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "需要获取您的位置信息"
+    }
+  },
+  "style": "v2"
+}

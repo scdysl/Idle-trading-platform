@@ -1,0 +1,37 @@
+<view class="container">
+  <view class="user">
+    <button style="margin: 0;padding: 0;" class="cleanBtn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+      <image style="width:80px;height:80px" src="{{avatarUrl}}"></image>
+    </button>
+    <view class="username">
+      {{nickName}}
+      <image class="sex" wx:if="{{gender !== 0}}" src="../../images/{{gender === 1?'man':'woman'}}.png"></image>
+    <view class="address">
+      {{province}} {{city}}
+    </view>
+    </view>
+    <!-- <button wx:if="{{!hasUserInfo && canIUse}}" class="circle" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 
+      微信登录
+    </button>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block> -->
+  </view>
+  <view class="more">
+      <navigator url="./goods/goods" class="nav">
+        <view>
+          <image style="width:30rpx;height:30rpx" src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/pubbyme.png"></image>
+          <text>我发布的闲置</text>
+        </view>
+        <image style="width:40rpx;height:40rpx" src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/right.png"></image>
+      </navigator>
+      <navigator url="./favorites/favorites" class="nav">
+        <view>
+          <image style="width:30rpx;height:30rpx" src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/collect.png"></image>
+          <text>我的收藏</text>
+        </view>
+        <image style="width:40rpx;height:40rpx" src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/right.png"></image>
+      </navigator>
+    </view>
+</view>

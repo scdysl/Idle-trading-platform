@@ -1,0 +1,83 @@
+.keyin{
+  height: 80rpx;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5rpx 20rpx 30rpx;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.keyin text{
+  text-align: center;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.keyin input{
+  width: 500rpx;
+  margin-right: 10rpx;
+}
+.ipt{
+  margin-right: 5rpx;
+}
+.info textarea{
+  border-bottom: 1px solid #ddd;
+  width: 95%;
+  height: 160rpx;
+  margin: 5rpx 20rpx 30rpx;
+}
+.keyinbtn{
+  height: 80rpx;
+  width: 95%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5rpx 20rpx 30rpx;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.keyinbtn text{
+  text-align: center;
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.keyinbtn input{
+  width: 260rpx;
+  margin-right: -106rpx;
+}
+.tips{
+  color: #777;
+  margin-left: 20rpx;
+}
+.pics-list{
+  width:73px;
+  height:73px;
+  float:left;
+  margin-right:6px;
+   
+ }
+ .uploadImg{
+  width:70px;
+  height:70px;
+  margin: 10rpx 10rpx;
+ }
+ .true{
+   display: block;
+ }
+ .hidetrue{
+   display: none;
+ }
+ .uploadImg-error{
+  height:20px;
+  width:20px;
+  background: #fff;
+  border-radius: 50%;
+  position:relative;
+  top:-80px;
+  left:55px;
+ }
+.btn_submit{
+  position: fixed;
+  bottom: 20rpx;
+  left: 192rpx;
+}

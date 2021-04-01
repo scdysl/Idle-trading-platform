@@ -1,0 +1,126 @@
+.container{
+  width: 100%;
+}
+.search{
+  width: 100%;
+  height: 80rpx;
+  padding-top: 10rpx;
+  background-color: #ff6801;
+}
+.searchwin{
+  margin: 0 auto;
+  box-sizing: border-box;
+  width: 85%;
+  height: 60rpx;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #fff;
+  border-radius: 50rpx;
+  padding-left: 40rpx;
+  padding-right: 20rpx;
+  align-items: center;
+  align-self: center;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+/* 下拉框 */
+.selectbox{
+  background-color: #fff;
+  width: 100%;
+  height: 80rpx;
+  margin: 20rpx auto;
+  border: 1px solid #ddd;
+  box-shadow:0px 0px 20px #e2d7d7;
+  position: relative;
+}
+.select{
+  width: 100%;
+  height: 70rpx;
+  border-radius: 8rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.selecttext{
+  font-size: 30rpx;
+  flex: 1;
+}
+.selectimg{
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+  transition: transform 0.3s;
+}
+.selectimgrotate{
+  transform: rotate(180deg);
+}
+.optionbox{
+  position: absolute;
+  top: 70rpx;
+  width: 100%;
+  padding-left: 5%;
+  padding-bottom: 10rpx;
+  overflow: hidden;
+  background: #fff;
+  transition: height 0.3s;
+  z-index: 200;
+}
+.option{
+  width: 80%;
+  display: block;
+  line-height: 40rpx;
+  font-size: 30rpx;
+  border-bottom: 1px solid #efefef;
+  padding: 10rpx;
+  padding-left: 20rpx;
+}
+.mask{
+  width: 100%;
+  height: 83vh;
+  position: fixed;
+  top: 214rpx;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 100;
+}
+
+/* 产品 */
+.goodslist{
+  background: #F7F8FA;
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 5rpx 5rpx;
+}
+.name{
+  font-size: 30rpx;
+}
+.price{
+  color: red;
+  font-size: 35rpx;
+}
+.clock,.address{
+  font-size: 25rpx;
+}
+.goodsleft{
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.goodsright{
+  width: 45%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.clean{
+  margin-right:30rpx;
+  outline: none;
+  background-color: transparent;
+  line-height: inherit;
+}

@@ -1,0 +1,44 @@
+<wxs src="../../utils/tools.wxs" module="tools" />
+<view class="container" bindtap="close">
+  <view class="search" >
+    <!-- 搜索页面 -->
+    <view class="searchwin" bindtap="tosearch">
+      <input disabled placeholder="请输入要搜索的商品" />
+      <image src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/search.png" style="width:50rpx;height:50rpx;"></image>
+    </view>
+  </view>
+  <!-- 下拉框 -->
+  <view class="selectbox">
+      <view class="select" catchtap="selectTap">
+        <text class="selecttext">{{selectData[index].text}}</text>
+        <image class='selectimg {{show&&"selectimgrotate"}}' src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/jiantouxia.png"></image>
+      </view>
+      <view class="optionbox" style="height:{{show?300:0}}rpx;">
+        <text class="option" wx:for="{{selectData}}" wx:key="this" data-index="{{item.value}}" catchtap="optionTap">{{item.text}}</text>
+      </view>
+  </view>
+  <!-- 蒙层 -->
+  <view class="{{isShow&&'mask'}}" catchtap="close"></view>
+
+  <!-- 产品 -->
+  <block wx:if="{{goodslist}}">
+    <view bindtap="goInfo"  data-id="{{item._id}}" class="goodslist" wx:for="{{goodslist}}" wx:key="key">
+        <view class="goodsleft">
+          <image style="margin:0 20rpx;width:100rpx;height:100rpx" src="{{item.thumb}}"></image>
+          <view class="txt">
+            <view class="name">{{item.title}}</view>
+            <view class="price">￥:{{item.price}}</view>
+          </view>
+        </view>
+        <view class="goodsright">
+          <view>
+            <view class="clock"><image style="width:26rpx;height:26rpx;margin-left:1rpx;margin-right:10rpx" src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/updatetime.png"></image>{{tools.formatTime(item.updatetime)}}</view>
+            <view class="address"><image style="width:28rpx;height:28rpx;margin-right:10rpx" src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/place.png"></image>{{item.address}}</view>
+          </view>
+        </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view style="text-align:center;color:#ddd">暂无数据</view>
+  </block>
+</view>

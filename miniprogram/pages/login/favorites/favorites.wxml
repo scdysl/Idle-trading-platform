@@ -1,0 +1,21 @@
+<wxs src="../../../utils/tools.wxs" module="tools" />
+<block wx:if="{{goodslist}}">
+    <view bindtap="goInfo"  data-id="{{item.goodslist[0]._id}}" class="goodslist" wx:for="{{goodslist}}" wx:key="key">
+        <view class="goodsleft">
+          <image style="margin:0 20rpx;width:100rpx;height:100rpx" src="{{item.goodslist[0].thumb}}"></image>
+          <view class="txt">
+            <view class="name">{{item.goodslist[0].title}}</view>
+            <view class="price">￥:{{item.goodslist[0].price}}</view>
+          </view>
+        </view>
+        <view class="goodsright">
+          <view>
+            <view class="clock"><image style="width:26rpx;height:26rpx;margin-left:1rpx;margin-right:10rpx" src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/updatetime.png"></image>{{tools.formatTime(item.goodslist[0].updatetime)}}</view>
+            <view class="address"><image style="width:28rpx;height:28rpx;margin-right:10rpx" src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/place.png"></image>{{item.goodslist[0].address}}</view>
+          </view>
+        </view>
+    </view>
+  </block>
+  <block wx:else>
+    <view style="text-align:center;color:#ddd">暂无数据</view>
+  </block>

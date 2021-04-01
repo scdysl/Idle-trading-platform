@@ -1,0 +1,16 @@
+<view class="search">
+  <view class="searchwin">
+  <input type="text" bindinput="onChange" bindconfirm="toSearch" confirm-type="search" placeholder="请输入要搜索的商品" />
+  <image bindtap="toSearch" src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/search.png" style="width:50rpx;height:50rpx;"></image>
+  </view>
+</view>
+
+<view class="historysearch">
+  <view class="histitle">
+    <text>历史记录</text>
+    <image bindtap="del" class="hisdelete" src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/deletegoods.png"></image>
+  </view>
+  <view class="his">
+    <text bindtap="toSearch" data-value="{{item}}" class="histips" wx:for="{{historyList}}" wx:key="index">{{item}}</text>
+  </view>
+</view>

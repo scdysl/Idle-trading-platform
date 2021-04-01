@@ -1,0 +1,120 @@
+.container{
+  width: 100%;
+  background: #f7f8fa;
+}
+.userinfo{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10rpx;
+  margin-bottom: 30rpx;
+  background: #fff;
+  box-sizing: border-box;
+}
+.userimg{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  margin: 20rpx;
+}
+.info{
+  margin-left: 20rpx;
+}
+.infotitle{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.sex{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 10rpx;
+}
+.address{
+  color: #999;
+}
+/* 商品详情 */
+.goodsdetail{
+  width: 100%;
+  margin: 40rpx 0;
+  padding-bottom: 40rpx;
+  box-sizing: border-box;
+  background: #fff;
+}
+.goodstitle{
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  padding: 30rpx 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.goodsprice{
+  color: red;
+  font-size: 40rpx;
+}
+.goodscontent{
+  width: 100%;
+  text-align: center;
+  padding: 30rpx 30rpx;
+  box-sizing: border-box;
+}
+.goodsintro{
+  text-align: left;
+  padding: 30rpx 30rpx;
+}
+.goodsimg{
+  width: 640rpx;
+  height: 480rpx;
+}
+.goodsbtm{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx;
+  color: #666;
+  font-size: 30rpx;
+  box-sizing: border-box;
+}
+.btm{
+  width: 100%;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  color: #999;
+  background: #f7f8fa;
+}
+/* 购买按钮 */
+.btn{
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  background-color: #fff;
+}
+.btnitem{
+  width: 20%;
+  text-align: center;
+  height: 100rpx;
+  font-size: 20rpx;
+  background-color: #fff;
+  color: #666;
+}
+.txt{
+  width: 60%;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #ff8601;
+  color:#fff;
+  font-size: 36rpx;
+}

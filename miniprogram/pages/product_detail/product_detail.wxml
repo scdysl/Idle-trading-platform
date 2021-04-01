@@ -1,0 +1,46 @@
+<wxs src="../../utils/tools.wxs" module="tools"></wxs>
+<view class="container">
+  <!-- 用户信息 -->
+  <view class="userinfo">
+    <image class="userimg" src="{{info.avatarUrl}}"></image>
+    <view class="info">
+      <view class="infotitle">
+        <view class="name">{{info.nickName}}</view>
+        <image class="sex"  wx:if="{{info.gender !== 0}}" src="../../images/{{info.gender === 1?'man':'woman'}}.png"></image>
+      </view>
+      <view class="address">地址：{{goodslist.address}}</view>
+    </view>
+  </view>
+  <!-- 商品详情 -->
+  <view class="goodsdetail">
+    <view class="goodstitle">
+      <view class="goodsname">{{goodslist.title}}</view>
+      <view class="goodsprice">￥{{goodslist.price}}</view>
+    </view>
+    <view class="goodscontent">
+      <view class="goodsintro">{{goodslist.deintro}}</view>
+      <image  wx:for="{{goodslist.pics}}" wx:key="index" class="goodsimg" src="{{item}}"></image>
+    </view>
+    <view class="goodsbtm">
+      <view class="time">发布时间：{{tools.formatTime(goodslist.addtime)}}</view>
+      <view class="hits">浏览量：{{goodslist.hits}}</view>
+    </view>
+    <view class="btm">到底了</view>
+  </view>
+
+
+  <!-- 按钮 -->
+  <view class="btn">
+    <button style="font-weight: 400; width: 20%;height: 100rpx;line-height:30rpx;font-size: 20rpx;border: none;padding: 0;margin:0;" size="mini"  open-type="share" class="btnitem">
+      <image src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/share.png" style="margin-top:5rpx;width:60rpx;height:60rpx"></image>
+      <view class="itemit">分享</view>
+    </button>
+    <view class="btnitem" bindtap="toCollection">
+      <view>
+        <image src="cloud://yslcloud-7gplj5eoab9beb35.7973-yslcloud-7gplj5eoab9beb35-1305085852/img/icons/{{isCollected?'collect-h':'collect'}}.png" style="margin-top:5rpx;width:60rpx;height:60rpx"></image>
+      </view>
+      <view class="itemit">收藏</view>
+    </view>
+    <view class="txt" bindtap="checkTel">查看联系方式</view>
+  </view>
+</view>
