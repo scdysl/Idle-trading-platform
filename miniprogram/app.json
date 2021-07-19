@@ -2,7 +2,6 @@
   "pages": [
     "pages/index/index",
     "pages/product_detail/product_detail",
-    "pages/shopping_cart/shopping_cart",
     "pages/publish/publish",
     "pages/login/favorites/favorites",
     "pages/login/goods/goods",
@@ -15,7 +14,7 @@
     "backgroundColor": "#f6f6f6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ff6801",
-    "navigationBarTitleText": "旧友",
+    "navigationBarTitleText": "BC",
     "navigationBarTextStyle": "white"
   },
   "tabBar": {
@@ -33,8 +32,8 @@
     },{
       "pagePath": "pages/login/login",
       "text": "我的",
-      "iconPath": "images/shopping_cart.png",
-      "selectedIconPath": "images/shopping_cart-h.png"
+      "iconPath": "images/my.png",
+      "selectedIconPath": "images/my-h.png"
     }]
   },
   "sitemapLocation": "sitemap.json",

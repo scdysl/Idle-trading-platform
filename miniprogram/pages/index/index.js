@@ -8,7 +8,8 @@ Page({
    */
   data: {
     skip:0,
-    product:[]
+    product:[],
+    goodsID:''
   },
 
   //跳转到搜索页面
@@ -58,11 +59,15 @@ Page({
       console.log('页面skip：',this.data.skip)
       // this.data.product.concat(res.data)
       var new_list = this.data.product.concat(res.data)
-      if(isBack){
-          db.collection("goods_list").get()
+      if(this.data.goodsID){
+          isBack = false;
+          db.collection("goods_list").doc(this.data.goodsID).get()
           .then(res=>{
+            console.log('goodsID的hits：',res.data.hits)
             for(let i=0;i<new_list.length;i++){
-                new_list[i].hits=res.data[i].hits
+              if(new_list[i]._id == this.data.goodsID){
+                new_list[i].hits=res.data.hits
+              }
             }
           })
       }
@@ -71,6 +76,7 @@ Page({
         skip:this.data.skip+res.data.length
       })
       console.log("getgoods后的skip",this.data.skip)
+      console.log("getgoods后的product数组",this.data.product)
     })
   },
   /**
@@ -99,8 +105,8 @@ Page({
    */
   onShow: function () {
     console.log('到达页面显示')
-    
-    
+    //goodsID用于更新浏览量hits
+    console.log('上个页面设置回的商品id',this.data.goodsID)
     this.getGoods()
   },
 
@@ -109,11 +115,11 @@ Page({
    */
   onHide: function () {
     console.log('页面隐藏')
-    isBack = true
-    this.setData({
-      skip:this.data.skip-7
-    })
-    this.data.product.splice(this.data.skip,this.data.skip+7)
+    // isBack = true
+    // this.setData({
+    //   skip:this.data.skip-7
+    // })
+    // this.data.product.splice(this.data.skip,this.data.skip+7)
   },
 
   /**

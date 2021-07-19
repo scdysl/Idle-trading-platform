@@ -28,9 +28,10 @@ Page({
     let pics = that.data.pics;
     wx.chooseImage({
       success:function(res){
-        console.log(res)
+        console.log('upImg>res:',res)
         count:6 - pics.length;
         filePath = res.tempFilePaths;
+        console.log('upImg>filePath:',filePath)
         filePath.forEach((item)=>{
           pics.push(item)
         })
@@ -46,12 +47,14 @@ Page({
       }
     })
   },
-  //上传图片到云函数
+  //上传图片到云存储
   upTocloud:function(){
     wx.showToast({
       title: '请稍后...',
+      icon:'loading'
     })
-    filePath.forEach((item,idx)=>{
+    console.log('upTocloud>filePath:',this.data.pics)
+    this.data.pics.forEach((item,idx)=>{
       var fileName = Date.now() + "_" + idx;
       this.cloudFile(fileName,item)
     })
@@ -65,6 +68,7 @@ Page({
       filePath:path,
       success:res=>{
         urlArr.push(res.fileID)
+        console.log('cloudFile>urlArr:',urlArr)
         // if(filePath.length == urlArr.length){
         //   this.setData({
         //     urlArr
@@ -93,11 +97,11 @@ Page({
      let newPics=[];
      for (let i = 0;i<pics.length; i++){
      //判断字符串是否相等
-       console.log('pics:'+i,pics[i])
-       console.log('deleteImg:',deleteImg)
-       if (pics[i] !== deleteImg){
-         newPics.push(pics[i])
-       }
+    console.log('pics:'+i,pics[i])
+    console.log('deleteImg:',deleteImg)
+     if (pics[i] !== deleteImg){
+     newPics.push(pics[i])
+     }
      }
      that.setData({
      pics: newPics,
@@ -169,6 +173,7 @@ Page({
         console.log('数据完整，开始上传到数据库')
         wx.showToast({
           title: '正在发布',
+          icon:'loading'
         })
         //上传到数据库
         var imgList = [];
@@ -184,7 +189,7 @@ Page({
             deintro:e.detail.value.deintro,
             address:e.detail.value.address,
             location:db.Geo.Point(this.data.location.logitude,this.data.location.latitude),
-            pics:this.data.pics,
+            pics:imgList,
             thumb:this.data.pics[0],
             addtime:db.serverDate(),
             updatetime:db.serverDate(),
@@ -222,16 +227,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    if(!app.globalData.openid){
-      wx.showToast({
-        title: '请登录',
-      })
-      setTimeout(function(){
-        wx.switchTab({
-          url: '../login/login',
-        })
-      },1000)
-    }
+    
   },
 
   /**
@@ -245,7 +241,20 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    if(!app.globalData.openid){
+      wx.showToast({
+        title: '请登录',
+        icon:'error',
+        mask:true
+      })
+      setTimeout(function(){
+        wx.hideToast();
+        wx.switchTab({
+          url: '../login/login',
+        })
+      },1000)
 
+    }
   },
 
   /**

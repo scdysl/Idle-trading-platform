@@ -2,13 +2,13 @@
 const app = getApp();
 const db = wx.cloud.database();
 const _ = db.command;
-var skip = 0;
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    skip:0,
     goodslist:[]
   },
 
@@ -22,28 +22,45 @@ Page({
   // 获取数据
   getMyCollected:function(){
     if(app.globalData.openid){
+      console.log('app:',app.globalData.openid)
       wx.cloud.callFunction({
         name:'getMyCollected',
         data:{
-          skip:skip,
+          skip:this.data.skip,
           openid:app.globalData.openid
         }
       })
       .then(res=>{
+        console.log(this.data.skip)
         console.log('完成getMyCollected',res)
         let new_list = this.data.goodslist.concat(res.result.list)
-        skip = skip + res.result.list.length
         this.setData({
-          goodslist:new_list
+          goodslist:new_list,
+          skip:new_list.length
         })
       })
+    }else{
+      
+      return;
     }
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.getMyCollected()
+    if(!app.globalData.openid){
+      wx.showToast({
+        title: '请登录后查看',
+        icon:'error'
+      })
+      setTimeout(function(){
+        wx.hideToast()
+        wx.switchTab({
+          url: '../login',
+        })
+      },1000)
+    }
+    
   },
 
   /**
@@ -57,7 +74,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.setData({
+      goodslist:[],
+      skip:0
+    })
+    this.getMyCollected()
   },
 
   /**

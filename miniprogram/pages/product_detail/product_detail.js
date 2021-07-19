@@ -97,57 +97,77 @@ Page({
     if(!app.globalData.openid){
       wx.showToast({
         title: '请登录',
-      })
-      return
-    }
-    console.log('用户已登录')
-    console.log('开始判断isCollected')
-    if(this.data.isCollected){
-      console.log('进入收藏if')
-      wx.showModal({
-        title:'是否取消收藏？',
-        success:res=>{
-          if(res.confirm){
-            db.collection("favorites_list").where({
-              _openid:app.globalData.openid,
-              goodsid:this.data.id
+        complete:res=>{
+          setTimeout(function(){
+            wx.switchTab({
+              url: '../login/login',
             })
-            .remove()
-            .then(res=>{
-              console.log('取消收藏成功',res)
-              this.setData({
-                isCollected:false
-              })
-            })
-          }
-        },
-        fail:err=>{
-          console.log('取消收藏失败',err)
+          },1000)
         }
       })
+      
     }else{
-      console.log('进入收藏else,物品id',this.data.id)
-      db.collection("favorites_list").add({
-        data:{
-          goodsid:this.data.id,
-          time:db.serverDate()
-        }
-      })
-      .then(res=>{
-        console.log('收藏成功',res)
-        this.setData({
-          isCollected:!this.data.isCollected
+      console.log('用户已登录')
+      console.log('开始判断isCollected')
+      if(this.data.isCollected){
+        console.log('进入收藏if')
+        wx.showModal({
+          title:'是否取消收藏？',
+          success:res=>{
+            if(res.confirm){
+              db.collection("favorites_list").where({
+                _openid:app.globalData.openid,
+                goodsid:this.data.id
+              })
+              .remove()
+              .then(res=>{
+                console.log('取消收藏成功',res)
+                this.setData({
+                  isCollected:false
+                })
+              })
+            }
+          },
+          fail:err=>{
+            console.log('取消收藏失败',err)
+          }
         })
-        wx.showToast({
-          title: '收藏成功',
+      }else{
+        console.log('进入收藏else,物品id',this.data.id)
+        db.collection("favorites_list").add({
+          data:{
+            goodsid:this.data.id,
+            time:db.serverDate()
+          }
         })
-      })
+        .then(res=>{
+          console.log('收藏成功',res)
+          this.setData({
+            isCollected:!this.data.isCollected
+          })
+          wx.showToast({
+            title: '收藏成功',
+          })
+        })
+      }
     }
+    
        
    },
    //查看联系方式
    checkTel:function(){
      console.log('点击查看联系方式')
+     if(!app.globalData.openid){
+      wx.showToast({
+        title: '请登录',
+        icon:'error'
+      })
+      setTimeout(function(){
+        wx.switchTab({
+          url: '../login/login',
+        })
+      },1000)
+    }else
      wx.showModal({
        title:this.data.info.nickName+'的联系方式',
        content:this.data.goodslist.tel,
@@ -255,10 +275,14 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面卸载
+   * 生命周期函数--监听页面卸载，左上角返回
    */
   onUnload: function () {
-
+    var pages = getCurrentPages();//获取所有页面
+    var beforePage = pages[pages.length - 2];//上一页
+    beforePage.setData({//使用上一页的setData()方法
+      goodsID:this.data.id
+    })
   },
 
   /**
@@ -281,7 +305,7 @@ Page({
   onShareAppMessage: function () {
     return {
       title:this.data.goodslist.title,
-      path:'/miniprogram/pages/product_detail/product_detail?id=' + this.data.id,//这里是路径
+      path:'../product_detail/product_detail?id=' + this.data.id,//这里是路径
       imageUrl:this.data.goodslist.thumb
     }
   }

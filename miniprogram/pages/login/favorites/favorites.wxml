@@ -1,5 +1,5 @@
 <wxs src="../../../utils/tools.wxs" module="tools" />
-<block wx:if="{{goodslist}}">
+<block wx:if="{{goodslist.length != 0}}">
     <view bindtap="goInfo"  data-id="{{item.goodslist[0]._id}}" class="goodslist" wx:for="{{goodslist}}" wx:key="key">
         <view class="goodsleft">
           <image style="margin:0 20rpx;width:100rpx;height:100rpx" src="{{item.goodslist[0].thumb}}"></image>

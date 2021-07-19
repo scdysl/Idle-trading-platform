@@ -54,7 +54,9 @@
   height:73px;
   float:left;
   margin-right:6px;
-   
+ }
+ .line{
+   padding-bottom: 100rpx;
  }
  .uploadImg{
   width:70px;

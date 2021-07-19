@@ -38,31 +38,64 @@ Page({
         console.log(event.currentTarget.dataset.id)
         console.log(res)
         db.collection("goods_list").doc(event.currentTarget.dataset.id)
-        .remove({
-          success:res =>{
-            wx.showToast({
-              title: '删除成功',
-            })
-            console.log('删除成功')
-            setTimeout(()=>{
-              this.getGoodsList()
-            },2000)
+        .get().then(res=>{
+          console.log('这是要删除的res：',res);
+          wx.cloud.deleteFile({//删除图片
+            fileList: res.data.pics, //云文件 ID
+          success: res => {
+            console.log(res.fileList);
           },
-          fail:err =>{
-            wx.showToast({
-              title: '删除失败',
-            })
-            console.log('删除失败',err)
+          fail: err => {
+            console.log(err);
           }
+          });
+          db.collection("goods_list").doc(event.currentTarget.dataset.id)
+          .remove()//删除goods_list记录
+          db.collection("favorites_list").where({//删除favorites_list记录
+            goodsid:event.currentTarget.dataset.id
+          }).remove({
+            success:res =>{
+                wx.showToast({
+                  title: '删除成功',
+                })
+                console.log('删除成功')
+                setTimeout(()=>{
+                  this.setData({
+                    skip:0,
+                    goodslist:[]
+                  });
+                  this.getGoodsList();
+                },1000)
+            },
+            fail:err =>{
+              wx.showToast({
+                title: '删除失败',
+              })
+              console.log('删除失败',err)
+            }
+          })
+          wx.showToast({
+            title: '删除成功',
+          })
+          console.log('删除成功')
+          setTimeout(()=>{
+            this.setData({
+              skip:0,
+              goodslist:[]
+            });
+            this.getGoodsList();
+          },1000)
         })
       }
     })
   },
   //获取发布列表
   getGoodsList:function(){
-    wx.showToast({
-      title: '加载中',
-    })
+      wx.showToast({
+        title: '加载中',
+        icon:'loading',
+        duration:500
+      })
     let openid = app.globalData.openid
     db.collection("goods_list")
     .where({
@@ -76,6 +109,7 @@ Page({
       let old_data = this.data.goodslist
       let new_data = old_data.concat(res.data)
       new_data.forEach(item => {
+        item.address = item.address.slice(0,6)+'...';
         item.updatetime = item.updatetime.toString()
       });
       console.log('newdata',new_data)
@@ -84,7 +118,7 @@ Page({
         skip:new_data.length
       })
       console.log(this.data.skip)
-      console.log(typeof this.data.goodslist[0].updatetime)
+      // console.log(typeof this.data.goodslist[0].updatetime)
     })
   },
   /**
@@ -95,8 +129,12 @@ Page({
     if(!app.globalData.openid){
       wx.showToast({
         title: '请登录后查看',
+        icon:'error'
       })
-      return
+      setTimeout(function(){wx.navigateBack({
+        delta: 1,
+      })},1000);
+      return;
     }
     this.getGoodsList()
   },

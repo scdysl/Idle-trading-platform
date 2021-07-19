@@ -1,6 +1,7 @@
 <view class="container">
   <view class="user">
-    <button style="margin: 0;padding: 0;" class="cleanBtn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+    <!-- <button style="margin: 0;padding: 0;" class="cleanBtn" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> -->
+    <button style="margin: 0;padding: 0;" class="cleanBtn" bindtap="getUserProfile">
       <image style="width:80px;height:80px" src="{{avatarUrl}}"></image>
     </button>
     <view class="username">

@@ -1,5 +1,4 @@
 .user{
-  height: 200rpx;
   padding: 20rpx 0;
   margin-bottom: 20rpx;
   background: #fff;
@@ -9,7 +8,6 @@
 .cleanBtn{
   outline: none;
   background-color: transparent;
-  line-height: inherit;
   width: 40%;
   display: block;
 }

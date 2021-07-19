@@ -97,6 +97,8 @@ Page({
     console.log('进入获取列表')
     wx.showToast({
       title: '加载中',
+      icon:'loading',
+      duration:1000
     })
     let where = {}
     if(this.data.index != 4){

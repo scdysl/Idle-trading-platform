@@ -56,7 +56,7 @@ Page({
       wx.showToast({
         title: '请稍后...',
       })
-      filePath.forEach((item,idx)=>{
+      this.data.pics.forEach((item,idx)=>{
         var fileName = Date.now() + "_" + idx;
         this.cloudFile(fileName,item)
       })
@@ -170,8 +170,8 @@ Page({
         })
         return
       }
-      console.log('这是location.logitude：',this.data.location.logitude)
-      console.log('longitude的类型：',typeof this.data.location.logitude)
+      console.log('这是location.logitude：',this.data.location.longitude)
+      console.log('longitude的类型：',typeof this.data.location.longitude)
       console.log('数据完整，开始上传到数据库')
       wx.showToast({
         title: '正在发布',
@@ -189,12 +189,11 @@ Page({
           tel:e.detail.value.tel,
           deintro:e.detail.value.deintro,
           address:e.detail.value.address,
-          location:db.Geo.Point(this.data.location.logitude,this.data.location.latitude),
-          pics:this.data.pics,
+          location:db.Geo.Point(this.data.location.longitude,this.data.location.latitude),
+          pics:imgList,
           thumb:this.data.pics[0],
           addtime:db.serverDate(),
           updatetime:db.serverDate(),
-          hits:0
         },
         success:res => {
           console.log('发布成功', res)
@@ -249,6 +248,8 @@ Page({
       let arr = res.data
       urlArr = arr.pics
       console.log('这是最开始的图片数组urlArr',urlArr)
+      console.log('这是location.latitude:',arr.location.latitude)
+      console.log('这是location.longitude:',arr.location.longitude)
       this.setData({
         title:arr.title,
         index:arr.index,
