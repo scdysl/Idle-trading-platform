@@ -93,11 +93,11 @@ Page({
      let newPics=[];
      for (let i = 0;i<pics.length; i++){
      //判断字符串是否相等
-    console.log('pics:'+i,pics[i])
-    console.log('deleteImg:',deleteImg)
-     if (pics[i] !== deleteImg){
-     newPics.push(pics[i])
-     }
+       console.log('pics:'+i,pics[i])
+       console.log('deleteImg:',deleteImg)
+       if (pics[i] !== deleteImg){
+         newPics.push(pics[i])
+       }
      }
      that.setData({
      pics: newPics,
